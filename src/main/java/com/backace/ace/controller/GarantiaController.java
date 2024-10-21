@@ -12,7 +12,7 @@ import java.time.format.DateTimeFormatter;
 
 @RestController
 @RequestMapping("/api/garantia")
-@CrossOrigin(origins = "http://localhost:63342")
+@CrossOrigin(origins = "http://localhost:5500")
 public class GarantiaController {
 
     @Autowired

@@ -24,7 +24,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(authz -> authz
                         .requestMatchers("/login").permitAll() // Permite acceso sin autenticación a la API de autenticación
                         .requestMatchers("/solicitudes").permitAll()
-                        .requestMatchers("/api/vehiculos/garantia").permitAll()
+                        .requestMatchers("/api/garantia/**").permitAll()
                         .anyRequest().authenticated() // Requiere autenticación para cualquier otra ruta
                 )
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)); // Establece que no se mantendrá el estado de sesión
@@ -35,7 +35,7 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Arrays.asList("http://localhost:63342")); // Permite orígenes específicos
+        configuration.setAllowedOrigins(Arrays.asList("http://127.0.0.1:5500", "http://localhost:5500")); // Permite el origen de tu frontend
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS")); // Métodos HTTP permitidos
         configuration.setAllowedHeaders(Arrays.asList("*")); // Permite todos los encabezados
         configuration.setAllowCredentials(true); // Permite el envío de credenciales (como cookies)
