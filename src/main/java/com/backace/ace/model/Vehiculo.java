@@ -1,36 +1,26 @@
 package com.backace.ace.model;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Column;
 
 @Entity
 public class Vehiculo {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id; // ID del vehículo
+    @Column(name = "placa_vehiculo", nullable = false, unique = true)
+    private String placaVehiculo; // Placa del vehículo
 
-    private String placa; // Placa del vehículo
     private String tipo; // Tipo de vehículo (particular, SUV, van, pickup, taxi)
     private String fechaCompra; // Fecha de compra en formato "yyyy-MM-dd"
 
     // Getters y Setters
-    public Long getId() {
-        return id;
+    public String getPlacaVehiculo() {
+        return placaVehiculo;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getPlaca() {
-        return placa;
-    }
-
-    public void setPlaca(String placa) {
-        this.placa = placa;
+    public void setPlacaVehiculo(String placaVehiculo) {
+        this.placaVehiculo = placaVehiculo;
     }
 
     public String getTipo() {

@@ -48,12 +48,40 @@ public class SolicitudServicioController {
 
         // Enviar correo electrónico
         String asunto = "Solicitud de Servicio Recibida";
-        String mensaje = "Estimado " + usuario.getNombre() + ", su solicitud de servicio para el vehículo con placa " +
-                nuevaSolicitud.getPlacaVehiculo() + " ha sido recibida exitosamente. " +
-                "Fecha del servicio: " + nuevaSolicitud.getFecha() +
-                " a las " + nuevaSolicitud.getHora() + ".";
-        emailService.enviarEmail(usuario.getCorreo(), asunto, mensaje); // Enviar al correo del usuario
 
+        String mensaje = "<html>" +
+                "<body style='font-family: Arial, sans-serif; color: #333;'>" +
+                "<h2 style='color: #202C45;'>Estimado " + usuario.getNombre() + ",</h2>" +
+                "<p>Su solicitud de servicio para el vehículo con placa <strong>" + nuevaSolicitud.getPlacaVehiculo() + "</strong> ha sido recibida exitosamente.</p>" +
+                "<p><strong>Tipo de Servicio:</strong> " + solicitud.getTipoServicio() + "</p>"+
+                "<p><strong>Fecha del servicio:</strong> " + nuevaSolicitud.getFecha() + " a las " + nuevaSolicitud.getHora() + ".</p>" +
+                "<p style='color: #202C45;'>Gracias por confiar en nuestros servicios. 😊</p>" +
+                "<p style='color: #555; font-size: 12px;'>Este es un mensaje generado automáticamente, por favor no responda a este correo.</p>" +
+                "<br><br>" +
+                "<hr>" +
+                "<p style='font-size: 14px; color: #333;'> <br>" +
+                "<strong style='color: #d08a2c; font-size: 18px;'>AutoCareEase</strong><br>" +
+                "<span style='color: #666; font-size: 14px;'>Optimización de procesos postventa en concesionarias</span><br><br>" +
+                "<span style='font-size: 14px;'>" +
+                "<strong>Móvil:</strong> <a href='tel:+573205205497' style='color: #2E86C1;'>+57 320 5205497</a> | " +
+                "<strong>Teléfono:</strong> <a href='tel:+573054756496' style='color: #2E86C1;'>+57 305 4756496</a><br>" +
+                "<strong>Correo electrónico:</strong> <a href='mailto:autocareeasemail@gmail.com' style='color: #2E86C1;'>autocareeasemail@gmail.com</a><br>" +
+                "AutoCareEase, Diagonal 30 50, Cartagena, Bolívar 130015<br>" +
+                "<a href='http://www.autocareease.com' style='color: #d08a2c;'>www.autocareease.com</a></span><br><br>" +
+                "<span style='font-size: 20px; color: #d08a2c;'>Síguenos:</span><br>" +
+                "<a href='https://www.facebook.com'><img src='https://i.imgur.com/A5fU5Wf.png' alt='Facebook' style='width: 20px; height: 20px;'></a> " +
+                "<a href='https://www.instagram.com'><img src='https://i.imgur.com/2kJeBhE.png' alt='Instagram' style='width: 20px; height: 20px;'></a> " +
+                "<a href='https://www.youtube.com'><img src='https://i.imgur.com/rK1sRql.png' alt='YouTube' style='width: 20px; height: 20px;'></a> " +
+                "<a href='https://www.linkedin.com'><img src='https://i.imgur.com/mT54n0e.png' alt='LinkedIn' style='width: 20px; height: 20px;'></a> " +
+                "<a href='https://www.twitter.com'><img src='https://i.imgur.com/ZHN8zr2.png' alt='Twitter' style='width: 20px; height: 20px;'></a>" +
+                "</p>" +
+                "</body>" +
+                "</html>";
+
+        // Enviar el correo usando el servicio de email con formato HTML
+        emailService.enviarEmail(usuario.getCorreo(), asunto, mensaje);
+
+        // Retornar respuesta exitosa
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body("{\"message\": \"Solicitud de servicio creada con éxito.\"}");
     }
