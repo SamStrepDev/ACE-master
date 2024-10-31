@@ -14,12 +14,13 @@ public class SolicitudServicio {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    private String cedula; // Número de cédula del cliente
-    private String placaVehiculo; // Placa del vehículo
-    private String tipoServicio; // Tipo de servicio solicitado
-    private LocalDate fecha; // Fecha del servicio
-    private LocalTime hora; // Hora del servicio
-    private String email; // Correo electrónico del cliente
+    private String cedula;
+    private String placaVehiculo;
+    private String tipoServicio;
+    private LocalDate fecha;
+    private LocalTime hora;
+    private String email;
+    private String estado; // Nuevo campo "estado"
 
     // Getters y Setters
     public int getId() {
@@ -76,5 +77,13 @@ public class SolicitudServicio {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 }

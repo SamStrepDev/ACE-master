@@ -43,6 +43,9 @@ public class SolicitudServicioController {
                     .body("{\"error\": \"" + e.getMessage() + "\"}");
         }
 
+        // Configurar el estado de la solicitud
+        solicitud.setEstado("Ingresado");
+
         // Guardar la solicitud
         SolicitudServicio nuevaSolicitud = solicitudServicioService.crearSolicitud(solicitud);
 
@@ -69,11 +72,11 @@ public class SolicitudServicioController {
                 "AutoCareEase, Diagonal 30 50, Cartagena, Bolívar 130015<br>" +
                 "<a href='http://www.autocareease.com' style='color: #d08a2c;'>www.autocareease.com</a></span><br><br>" +
                 "<span style='font-size: 20px; color: #d08a2c;'>Síguenos:</span><br>" +
-                "<a href='https://www.facebook.com'><img src='https://i.imgur.com/A5fU5Wf.png' alt='Facebook' style='width: 20px; height: 20px;'></a> " +
-                "<a href='https://www.instagram.com'><img src='https://i.imgur.com/2kJeBhE.png' alt='Instagram' style='width: 20px; height: 20px;'></a> " +
-                "<a href='https://www.youtube.com'><img src='https://i.imgur.com/rK1sRql.png' alt='YouTube' style='width: 20px; height: 20px;'></a> " +
-                "<a href='https://www.linkedin.com'><img src='https://i.imgur.com/mT54n0e.png' alt='LinkedIn' style='width: 20px; height: 20px;'></a> " +
-                "<a href='https://www.twitter.com'><img src='https://i.imgur.com/ZHN8zr2.png' alt='Twitter' style='width: 20px; height: 20px;'></a>" +
+                "<a href='https://www.facebook.com/people/Auto-Care-Ease/61567536633007/'><img src='https://i.imgur.com/A5fU5Wf.png' alt='Facebook' style='width: 20px; height: 20px;'></a> " +
+                "<a href='https://www.instagram.com/autocareease/'><img src='https://i.imgur.com/2kJeBhE.png' alt='Instagram' style='width: 20px; height: 20px;'></a> " +
+                "<a href='https://www.youtube.com/channel/UCxJ-eUYAhK1Q72a7Jxgpkdg'><img src='https://i.imgur.com/rK1sRql.png' alt='YouTube' style='width: 20px; height: 20px;'></a> " +
+                "<a href='https://www.linkedin.com/in/autocareease-autocareease-171413335/'><img src='https://i.imgur.com/mT54n0e.png' alt='LinkedIn' style='width: 20px; height: 20px;'></a> " +
+                "<a href='https://x.com/AutoCareEase'><img src='https://i.imgur.com/ZHN8zr2.png' alt='Twitter' style='width: 20px; height: 20px;'></a>" +
                 "</p>" +
                 "</body>" +
                 "</html>";

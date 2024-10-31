@@ -25,6 +25,7 @@ public class SecurityConfig {
                         .requestMatchers("/login").permitAll() // Permite acceso sin autenticación a la API de autenticación
                         .requestMatchers("/solicitudes").permitAll()
                         .requestMatchers("/api/garantia/**").permitAll()
+                        .requestMatchers("/servicios/estado/**").permitAll()
                         .anyRequest().authenticated() // Requiere autenticación para cualquier otra ruta
                 )
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)); // Establece que no se mantendrá el estado de sesión

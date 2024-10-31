@@ -18,12 +18,10 @@ public class LoginController {
 
     @PostMapping
     public ResponseEntity<?> login(@RequestBody LoginDto loginDto) {
-        // Validar si los campos son nulos o vacíos
-
-
         try {
             Usuario authenticatedUser = usuarioService.autenticar(loginDto.getNombre(), loginDto.getCorreo(), loginDto.getCedula());
-            return ResponseEntity.ok().body("cliente.html"); // Redirección después del login exitoso
+            // Devolver los datos del usuario autenticado
+            return ResponseEntity.ok().body(authenticatedUser);
         } catch (IllegalArgumentException e) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Credenciales incorrectas.");
         } catch (Exception e) {
